@@ -2,26 +2,34 @@
 from typing import List
 
 # Sol1 not implemented correctly
+def insert(arr: List[int], x: int, j: int) -> List[int]:
+    """
+        shift elements in an array for insertion of x into index j
+    """
+    # Shift
+    for i in reversed(range(j+1, len(arr)-1)):
+        arr[i+1] = arr[i]
+    # Insert
+    arr[j] = x
+    return arr
+
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        i, j = 0,0 # Array Indecies
-        while i < m and j < n:
-            if nums2[j] < nums1[i]:
-                # Insert at start
-                nums1.insert(i,nums2[j])
-                i += 1 # Increment i to account for shift in values of interest
-                j += 1
-            elif nums2[j] < nums1[i+1]: # This will have index overflow issues
-                # If Greater than first value but less than next value insert
-                nums1.insert(i+1, nums2[j])
-                i += 1
-                j += 1
+        p1 = 0
+        p2 = 0
+        
+        while p1 < m and p2 < n:
+            if nums1[p1 + p2] > nums2[p2]:
+                nums1[p1 + p2 + 1:] = nums1[p1 + p2:m + n - 1]
+                nums1[p1 + p2] = nums2[p2]
+                p2 += 1
             else:
-                # nums1[i] and nums1[i+1] < nums2 
-                i += 1
+                p1 += 1
+        if p1 == m:
+            nums1[p1 + p2:] = nums2[p2:]
 
 # Easy solution
 class Solution2:
@@ -31,6 +39,6 @@ class Solution2:
         nums1 = sorted(nums1)
 
 sol1 = Solution()
-num1, num2, m, n = [1,3,5,0,0,0], [2,3,4], 3, 3
+num1, num2, m, n = [1,2,3,0,0,0], [2,5,6], 3, 3
 sol1.merge(num1, m, num2, n)
 print(num1)
