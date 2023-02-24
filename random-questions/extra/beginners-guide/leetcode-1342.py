@@ -2,7 +2,7 @@ from time import time as perf_counter
 import random
 
 # Timing wrapper
-def method_timer(method):
+def profiler(method):
     def wrapper_method(*arg, **kw):
         t = perf_counter()
         ret = method(*arg, **kw)
@@ -11,8 +11,15 @@ def method_timer(method):
         return ret
     return wrapper_method
 
-if __name__ == "__main__":
-    @method_timer
-    def test_method():
-        print("Test")
-    test_method()
+class Solution:
+    @profiler
+    def numberOfSteps(self, num: int) -> int:
+        i = 0
+        while num != 0:
+            num = num/2 if num%2==0 else num-1
+            i+=1
+        return i
+
+solution = Solution()
+print(solution.numberOfSteps(15654000121210212121211111005))
+        
