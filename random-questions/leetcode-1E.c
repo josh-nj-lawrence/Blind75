@@ -1,7 +1,9 @@
+#include <stdlib.h>
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
 int* twoSum(int* nums, int numsSize, int target, int* returnSize){
+    
     int *rarr = malloc(2*sizeof(int));
     rarr[0] = 1;
     rarr[1] = 1;
@@ -16,5 +18,13 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize){
         }
     }
     *returnSize = 0;
+    return 0;
+}
+
+int main(){
+    int arr[] = {2,7,11,15};
+    int target = 18;
+    int ans[] = twoSum(arr, sizeof(arr), target, 2);
+    printf(ans[0], ans[1]);
     return 0;
 }
