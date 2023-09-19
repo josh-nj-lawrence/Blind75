@@ -1,8 +1,4 @@
-# Blind75 - LeetCode
+# Random LeetCode Questions Repo
 
 # Description
-Daily prescribed LeetCode problems for a variety of topics. The following repo contains my resulting solutions for each question. 
-
-Each question is identified by a unique number which is specified in the file name. Each day is described by a certain topic.
-
-### Link: https://leetcode.com/study-plan/leetcode-75/?progress=xdlew52v
+As I continue to improve my development skills I've created a repo for storing all of my leetcode question responses such that I can refer to previous implementations, improve past submission and keep track of which ones I've done!
